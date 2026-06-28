@@ -24,28 +24,7 @@
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
-    cursor: none;
   }
-
-  /* ─── CURSOR ─── */
-  .cursor {
-    position: fixed; width: 12px; height: 12px;
-    background: var(--accent); border-radius: 50%;
-    pointer-events: none; z-index: 9999;
-    transform: translate(-50%,-50%);
-    transition: width 0.3s ease, height 0.3s ease;
-  }
-  .cursor-ring {
-    position: fixed; width: 40px; height: 40px;
-    border: 1px solid rgba(200,169,110,0.5); border-radius: 50%;
-    pointer-events: none; z-index: 9998;
-    transform: translate(-50%,-50%);
-    transition: width 0.3s ease, height 0.3s ease;
-  }
-  body:has(a:hover) .cursor,
-  body:has(button:hover) .cursor { width: 20px; height: 20px; }
-  body:has(a:hover) .cursor-ring,
-  body:has(button:hover) .cursor-ring { width: 60px; height: 60px; }
 
   /* ─── LOADER ─── */
   #loader {
@@ -147,7 +126,7 @@
     padding: 14px 32px; border: 1px solid rgba(200,169,110,0.4);
     color: var(--cream); text-decoration: none; font-size: 0.8rem;
     letter-spacing: 0.12em; text-transform: uppercase;
-    transition: background 0.3s, border-color 0.3s, gap 0.3s; cursor: none;
+    transition: background 0.3s, border-color 0.3s, gap 0.3s;
   }
   .hero-cta:hover { background: rgba(200,169,110,0.1); border-color: var(--accent); gap: 20px; }
 
@@ -240,7 +219,7 @@
   }
   .photo-item {
     background:var(--navy-mid); border:1px solid rgba(245,240,232,0.05);
-    border-radius:2px; overflow:hidden; position:relative; cursor:none;
+    border-radius:2px; overflow:hidden; position:relative;
     opacity:0; transform:translateY(20px);
     transition:opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease;
   }
@@ -264,7 +243,7 @@
   .videos .section-label { color:var(--navy-light); }
   .videos .section-label::after { background:rgba(22,38,64,0.2); }
   .videos h2 { color:var(--navy); }
-  .videos-row { display:grid; grid-template-columns:repeat(2,1fr); gap:32px; margin-top:56px; }
+  .videos-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:32px; margin-top:56px; }
   .video-card { position:relative; border-radius:2px; }
   .video-meta { margin-top:14px; }
   .video-title { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:400; color:var(--navy); letter-spacing:0.02em; }
@@ -286,21 +265,21 @@
     padding:18px 48px; background:var(--accent); color:var(--navy);
     text-decoration:none; font-size:0.8rem; font-weight:500;
     letter-spacing:0.15em; text-transform:uppercase;
-    transition:background 0.3s, gap 0.3s; cursor:none;
+    transition:background 0.3s, gap 0.3s;
   }
   .contact-btn:hover { background:var(--cream); gap:24px; }
   .contact-email {
     display:block; margin-top:48px;
     font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic;
     color:var(--cream-dim); text-decoration:none; letter-spacing:0.05em;
-    transition:color 0.3s; cursor:none;
+    transition:color 0.3s;
   }
   .contact-email:hover { color:var(--accent); }
   .contact-socials { display:flex; gap:32px; justify-content:center; margin-top:40px; }
   .contact-socials a {
     font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;
     color:var(--cream-dim); text-decoration:none; position:relative;
-    transition:color 0.3s; cursor:none;
+    transition:color 0.3s;
   }
   .contact-socials a::after {
     content:''; position:absolute; bottom:-4px; left:0;
@@ -343,9 +322,6 @@
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
 <div id="loader">
   <div class="loader-text">
     <span>S</span><span>n</span><span>e</span><span>h</span><span>i</span><span>l</span>&nbsp;<span>S</span><span>i</span><span>n</span><span>g</span><span>h</span>
@@ -357,6 +333,7 @@
   <a href="#" class="nav-logo">SS</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#commercials">Commercials</a></li>
     <li><a href="#videos">Documentaries</a></li>
     <li><a href="#marketing-reel">Marketing</a></li>
     <li><a href="#short-films">Films</a></li>
@@ -372,7 +349,7 @@
     <div class="hero-eyebrow">Visual Storyteller &amp; Cinematographer</div>
     <h1 class="hero-title">Crafting <em>light</em><br>into memory.</h1>
     <p class="hero-sub">A portfolio of videos and films that find the extraordinary in the ordinary — one frame at a time.</p>
-    <a href="#photos" class="hero-cta">View Work <span>→</span></a>
+    <a href="#commercials" class="hero-cta">View Work <span>→</span></a>
   </div>
 
   <!-- HOLOGRAM — lives directly in the page, no iframe -->
@@ -424,35 +401,65 @@
 -->
 
 
-<!-- VIDEOS: DOCUMENTARY & TALKING HEADS -->
-<section class="videos" id="videos" style="background:var(--navy);">
-  <div class="section-label reveal" style="color:var(--accent);">
-    Films
+<!-- VIDEOS: COMMERCIALS -->
+<section class="videos" id="commercials">
+  <div class="section-label reveal">
+    Works
   </div>
 
-  <h2 class="reveal" style="color:var(--cream);">
-    Documentary &amp;<br>
-    <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--accent);">
-      Talking Heads
-    </em>
+  <h2 class="reveal" style="color:var(--navy);">
+    Commercials
   </h2>
 
   <div class="videos-row reveal">
 
     <div class="video-card">
       <video controls playsinline preload="metadata" style="border-radius:2px;">
-        <source src="videos/Video2.mp4" type="video/mp4">
+        <source src="videos/Video3.mp4" type="video/mp4">
       </video>
 
       <div class="video-meta">
-        <div class="video-title" style="color:var(--cream);">
-          Documentary
+        <div class="video-title">
+          Commercial I
         </div>
         <div class="video-views">
          
         </div>
       </div>
     </div>
+
+    <div class="video-card">
+      <video controls playsinline preload="metadata" style="border-radius:2px;">
+        <source src="videos/Video4.mp4" type="video/mp4">
+      </video>
+
+      <div class="video-meta">
+        <div class="video-title">
+          Commercial II
+        </div>
+        <div class="video-views">
+         
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEOS: TALKING HEADS & DOCUMENTARY -->
+<section class="videos" id="videos" style="background:var(--navy);">
+  <div class="section-label reveal" style="color:var(--accent);">
+    Films
+  </div>
+
+  <h2 class="reveal" style="color:var(--cream);">
+    Talking Heads &amp;<br>
+    <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--accent);">
+      Documentary
+    </em>
+  </h2>
+
+  <div class="videos-row reveal">
 
     <div class="video-card">
       <video controls playsinline preload="metadata" style="border-radius:2px;">
@@ -469,8 +476,24 @@
       </div>
     </div>
 
+    <div class="video-card">
+      <video controls playsinline preload="metadata" style="border-radius:2px;">
+        <source src="videos/Video2.mp4" type="video/mp4">
+      </video>
+
+      <div class="video-meta">
+        <div class="video-title" style="color:var(--cream);">
+          Documentary
+        </div>
+        <div class="video-views">
+         
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
+
 
 <!-- VIDEOS: SHORT FILMS -->
 <section class="videos" id="short-films">
@@ -565,12 +588,6 @@
 <script>
 // ─── LOADER ───
 window.addEventListener('load',()=>{ setTimeout(()=>document.getElementById('loader').classList.add('hidden'),2200); });
-
-// ─── CURSOR ───
-const cursor=document.getElementById('cursor'), ring=document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
-(function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
 
 // ─── NAV ───
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60));
